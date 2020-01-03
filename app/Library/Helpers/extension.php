@@ -34,6 +34,8 @@ if (!function_exists('sc_get_all_plugin')) {
         $dirs = array_filter(glob(app_path() . '/Plugins/' . $group . '/' . $code . '/*'), 'is_dir');
         if ($dirs) {
             foreach ($dirs as $dir) {
+                // path For Windows  change it to backslashes
+                $dir = str_replace('\\', '/', $dir);
                 $tmp = explode('/', $dir);
                 $nameSpace = '\App\Plugins\\' . $group . '\\' . $code . '\\' . end($tmp);
                 $nameSpaceConfig = $nameSpace . '\\AppConfig';
